@@ -28,14 +28,15 @@ example.controller("ExampleController", function($scope, $cordovaSQLite) {
  
     $scope.insert = function(firstname, lastname) {
         var query = "INSERT INTO people (firstname, lastname) VALUES (?,?)";
-        $cordovaSQLite.execute(db, query, [firstname, lastname]).then(function(res) {
-            var message = "INSERT ID -> " + res.insertId;
-            console.log(message);
-            alert(message);
-        }, function (err) {
-            console.error(err);
-            alert(err);
-        });
+        for( var i = 0; i < 2000; i++ ) {
+            $cordovaSQLite.execute(db, query, [firstname, lastname]).then(function(res) {
+                var message = "INSERT ID -> " + res.insertId;
+                console.log(message);
+            }, function (err) {
+                console.error(err);
+                alert(err);
+            });
+        }
     }
  
     $scope.select = function(lastname) {
