@@ -1,4 +1,4 @@
-SQLite on iOS fails after 500-1000 "uses" (transactions) during the lifecycle of the app. This example expedites the failure, but even if the loop count is changed to 100, the app will fail after typical real world use paterns.
+SQLite on iOS fails after 500-1000 "uses" (transactions) during the lifecycle of the app. This example expedites the failure, but even if the loop count is changed to 100, the app will fail after typical real world use patterns.
 
 After 500-1000 transaction completions, the system goes deaf and no more SQLite transactions will be processed.
 
