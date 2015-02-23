@@ -1,4 +1,4 @@
-Reproduce Sqlite 1000 cycle bug on iOS.
+Reproduce SQLITE (ngCordova) iOS 1000 Transactions Bug
 
     ionic start ionic-sqlite blank
     cd ionic-sqlite
