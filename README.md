@@ -1,4 +1,8 @@
-This appears to be a bug with >1000 sequential transactions on iOS.
+SQLite on iOS fails after 500-1000 "uses" (transactions) during the lifecycle of the app. This example expedites the failure, but even if the loop count is changed to 100, the app will fail after typical real world use paterns.
+
+After 500-1000 transaction completions, the system goes deaf and no more SQLite transactions will be processed.
+
+#1 TO BUILD AND REPRODUCE THIS ISSUE:
 
 Command Line:
 
@@ -11,15 +15,18 @@ Command Line:
     cat [your_path]/ionic-sqlite-1000-transactions-ios-bug/platforms/ios/cordova/console.log
 
 
-    BUG: Inserts only to 509 - 998 rows and then locks up.
+    BUG: Inserts only to 509 - 998 rows and then goes deaf an no more closure callbacks return.
 
-OTHER DETAILS:
+#2 Change loop count to 100 and repeat test by clicking Insert button multiple times. This should simulate real world use of an app lifecycle. Using collections will only increase the number inserts possible until failure.
 
-This only happens on iOS, not browsers.
-This also happens with WebSQL.
-You can also reproduce this by removing the INSERT and only execute empty transactions.
+#3 Remove the executeSql call so you have an empty transaction -- failure still occurs.
 
-Not sure if there needs to be some cleanup between calls. I’ve tried with both ngCordova and direct plugin calls. This was forked based on an existing project by CharlesMendes for ease, but other projects out there exhibit the same problem after 1000 cycles on iOS.
+#4 Replace the test with WebSQL -- failure still occurs.
+
+#5 See issue filed with brodysoft/Cordova-SQLitePlugin:
+https://github.com/brodysoft/Cordova-SQLitePlugin/issues/190
+
+
+Not sure if there needs to be some cleanup between calls. I’ve tried with both ngCordova and direct plugin calls. While this example code was forked from CharlesMendes, other projects exhibit the same iOS SQLite failure after 500-1000 cycles.
 
 Any input on the cause / fix is appreciated.
-
