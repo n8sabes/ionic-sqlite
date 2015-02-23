@@ -2,7 +2,7 @@ SQLite on iOS fails after 500-1000 "uses" (transactions) during the lifecycle of
 
 After 500-1000 transaction completions, the system goes deaf and no more SQLite transactions will be processed.
 
-1. TO BUILD AND REPRODUCE THIS ISSUE:
+1 -- TO BUILD AND REPRODUCE THIS ISSUE:
 
 Command Line:
 
@@ -17,13 +17,13 @@ Command Line:
 
     BUG: Inserts only to 509 - 998 rows and then goes deaf an no more closure callbacks return.
 
-2. Change loop count to 100 and repeat test by clicking Insert button multiple times. This should simulate real world use of an app lifecycle. Using collections will only increase the number inserts possible until failure.
+2 -- Change loop count to 100 and repeat test by clicking Insert button multiple times. This should simulate real world use of an app lifecycle. Using collections will only increase the number inserts possible until failure.
 
-3. Remove the executeSql call so you have an empty transaction -- failure still occurs.
+3 -- Remove the executeSql call so you have an empty transaction -- failure still occurs.
 
-4. Replace the test with WebSQL -- failure still occurs.
+4 -- Replace the test with WebSQL -- failure still occurs.
 
-5. See issue filed with brodysoft/Cordova-SQLitePlugin:
+5 -- See issue filed with brodysoft/Cordova-SQLitePlugin:
 https://github.com/brodysoft/Cordova-SQLitePlugin/issues/190
 
 
