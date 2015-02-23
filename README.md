@@ -17,6 +17,7 @@ OTHER DETAILS:
 
 This only happens on iOS, not browsers.
 This also happens with WebSQL.
+You can also reproduce this by removing the INSERT and only execute empty transactions.
 
 Not sure if there needs to be some cleanup between calls. I’ve tried with both ngCordova and direct plugin calls. This was forked based on an existing project by CharlesMendes for ease, but other projects out there exhibit the same problem after 1000 cycles on iOS.
 
