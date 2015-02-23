@@ -1,4 +1,4 @@
-Reproduce Sqlite 1000 cycle bug.
+Reproduce Sqlite 1000 cycle bug on iOS.
 
     ionic start ionic-sqlite blank
     cd ionic-sqlite
