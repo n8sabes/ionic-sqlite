@@ -19,7 +19,9 @@ var example = angular.module('starter', ['ionic', 'ngCordova'])
             StatusBar.styleDefault();
         }
         
-        db = $cordovaSQLite.openDB({ name: "my.db" });
+        db = $cordovaSQLite.openDB({ name: "my.db" });                  // Open SQLite
+        //db = openDatabase('mydb', '1.0', 'my.db', 1 * 1024 * 1024);   // Open WebSQL
+
         $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS people (id integer primary key, firstname text, lastname text)");
   });
 })
